@@ -5,11 +5,11 @@ CaféBot is an intelligent butler robot designed to streamline food delivery ope
 ---
 
 ## 🚀 Features  
-✅ **Autonomous navigation from home → kitchen → tables → home**
-✅ **Handles multiple simultaneous orders efficiently**
-✅ **Timeout mechanism if confirmation is not received**
-✅ **Smart return logic (e.g., returning to the kitchen after cancellations)**
-✅ **Adaptive to busy café environments** 
+✅ **Autonomous navigation from home → kitchen → tables → home**  
+✅ **Handles multiple simultaneous orders efficiently**  
+✅ **Timeout mechanism if confirmation is not received**  
+✅ **Smart return logic (e.g., returning to the kitchen after cancellations)**  
+✅ **Adaptive to busy café environments**  
 
 ---
 
