@@ -63,11 +63,33 @@ https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
 | Scenario | Robot Behavior |
 |----------|---------------|
 | Order received | Moves from home → kitchen → table → home |
-| No confirmation at kitchen/table | Waits for timeout, then returns home |
-| Task canceled (before reaching table) | Returns to kitchen → home |
-| Multiple orders | Delivers to all tables before returning home |
-| Order skipped | Skips the canceled table and proceeds |
+| No confirmation at kitchen | Waits for 10 second timeout, then returns home |
+| No confirmation at table | Waits for 10 second timeout, then move kitchen before returning home |
+| Task canceled | Returns to kitchen → home |
+| Multiple orders (any order cancel) | Delivers to all tables move kitchen before returning home |
+| Multiple orders (all confirm order) | Delivers to all tables and returning home |
 
+
+Order Received (table1, table2, table3)
+        |
+        v
+    Move to Kitchen
+        |
+        v
+  Wait for Confirmation
+  ┌───────────────┬───────────────┐
+  |               |               |
+  v               v               v
+ Confirmed       Canceled       Timeout
+  |               |               |
+  v               v               v
+Move to         Return         Return
+table1 →       to Home        to Home
+table2 →
+table3
+  |
+  v
+Return to Home
 
 ## 📂 Project Structure
 ```
