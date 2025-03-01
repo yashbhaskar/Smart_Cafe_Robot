@@ -27,6 +27,7 @@ cd ~/ros_ws
 colcon build --packages-select robot_description
 source install/setup.bash
 ```
+---
 
 ## 🎮 Usage
 
@@ -55,9 +56,14 @@ Once the node starts, it will listen for voice commands such as:
 ``"If Cancel"`` – Move towards Home
 ![Screenshot from 2025-03-02 02-43-51](https://github.com/user-attachments/assets/b6c0c0b1-d167-4890-bde1-5d54251bb14e)
 
+---
+
 ## 📹 Working Videos
 
 https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
+
+---
+
 
 ## 📌 Handling Different Scenarios
 | Scenario | Robot Behavior |
@@ -70,19 +76,36 @@ https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
 | Multiple orders (all confirm order) | Delivers to all tables and returning home |
 
 
-# Decision Tree for Navigation
+---
 
-```mermaid
-graph TD;
-    A[Start] -->|Go to| B(Kitchen)
-    B -->|Confirm| C(Table 1)
-    B -->|Cancel| D(Home)
-    C --> E{Next Table?}
-    E -->|Table 2| F(Table 2)
-    F -->|Table 3| G(Table 3)
-    G --> H(Back to Home)
-    E -->|No| H
+## 🔄 Step-by-Step Navigation Logic  
 
+### 1️⃣ Initial Movement  
+- The robot takes inputs tabl1,table2,table3 and **starts** and moves to the **Kitchen** to pick up an item.  
+
+### 2️⃣ Order Processing  
+- If the order is **confirmed**, the robot proceeds to **Table 1** to deliver the item.  
+- If the order is **canceled**, the robot **immediately returns Home** without making any further stops.  
+
+### 3️⃣ Delivery Check at Table 1  
+- After reaching at **Table 1**, the robot takes order confirmation:  
+  - If **Confirm** , it moves to **Table 2**.  
+  - If **Cancel** , it moves to **Table 2**.after delivered all orders robot move to kitchen before home.
+  - If **Not Give input** , it moves to **Table 2**.after delivered all orders robot move to kitchen before home.
+  
+## 4️⃣ Delivery Check at Table 2
+- After reaching at **Table 2**, the robot takes order confirmation:  
+  - If **Confirm** , it moves to **Table 3**.  
+  - If **Cancel** , it moves to **Table 3**.after delivered all orders robot move to kitchen before home.
+  - If **Not Give input** , it moves to **Table 3**.after delivered all orders robot move to kitchen before home.
+
+## 5️⃣ Delivery Check at Table 3
+- After reaching at **Table 2**, the robot takes order confirmation:  
+  - If **Confirm** , if all tables order is confirm then move to home. if any table order is cancel then move to kitchen before home.
+  - If **Cancel** , robot move to kitchen before home.
+  - If **Not Give input** , robot move to kitchen before home.
+
+---
 
 ## 📂 Project Structure
 ```
@@ -101,15 +124,22 @@ robot_description/
 │── package.xml
 ```
 
+---
+
+
 ## 📡 RQT Graph Visualization
 Below is an RQT graph of the ROS 2 nodes and topics used in this package:
 
 ![Screenshot from 2025-03-02 02-52-34](https://github.com/user-attachments/assets/a9a93ff0-0ddd-466b-9f58-6d6e24d8106f)
 
+---
 
 ## 🤝 Contributing
 
 Feel free to fork this repository, create a pull request, or open an issue if you have suggestions or find bugs.
+
+---
+
 
 ## ✉️ Contact
 
