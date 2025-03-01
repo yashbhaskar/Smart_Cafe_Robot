@@ -55,44 +55,42 @@ Once the node starts, it will listen for voice commands such as:
 ``"If Cancel"`` – Move towards Home
 ![Screenshot from 2025-03-02 02-43-51](https://github.com/user-attachments/assets/b6c0c0b1-d167-4890-bde1-5d54251bb14e)
 
-## 📹 Demo Video
+## 📹 Working Videos
 
-https://github.com/user-attachments/assets/ffe5805c-e38b-40e1-bdbb-48c0156fc791
+https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
 
-## 📡 ROS 2 Topics & Services Used
-
-| Topic Name   | Message Type      | Description             |
-|--------------|-------------------|--------------------------|
-| `/cmd_vel` | `geometry_msgs/Twist`| Publishes velocity commands to the robot|
-|`/voice_command` | `std_msgs/String`| Publishes recognized voice commands |
+## 📌 Handling Different Scenarios
+| Scenario | Robot Behavior |
+|----------|---------------|
+| Order received | Moves from home → kitchen → table → home |
+| No confirmation at kitchen/table | Waits for timeout, then returns home |
+| Task canceled (before reaching table) | Returns to kitchen → home |
+| Multiple orders | Delivers to all tables before returning home |
+| Order skipped | Skips the canceled table and proceeds |
 
 
 ## 📂 Project Structure
 ```
-ros2_bot_description/
+robot_description/
 │── launch/                        # Launch files for ROS 2
 │   ├── gazebo.launch.py
 │   ├── state_publisher.launch.py
-│   ├── slave.launch.py
 │── models/
 │   ├── meshes
 │   ├── urdf
-│── scripts/                        # Python scripts for voice recognition
+│── scripts/                        # Python scripts for control and gui
 │   ├── robot_controller.py
-│   ├── voice_command.py
 │── worlds/
-│   ├── new_world.sdf
+│   ├── cafe.sdf
 │── CMakeLists.txt                  # CMake build configuration
 │── package.xml
-│── README.md
 ```
 
 ## 📡 RQT Graph Visualization
 Below is an RQT graph of the ROS 2 nodes and topics used in this package:
 
-![Screenshot from 2025-02-09 16-07-54](https://github.com/user-attachments/assets/36fdc976-b912-4bae-b3a4-cb0c9236f477)
+![Screenshot from 2025-03-02 02-52-34](https://github.com/user-attachments/assets/a9a93ff0-0ddd-466b-9f58-6d6e24d8106f)
 
-This shows how voice commands are processed and sent to the robot.
 
 ## 🤝 Contributing
 
