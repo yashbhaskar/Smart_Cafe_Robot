@@ -81,7 +81,7 @@ https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
 ## 🔄 Step-by-Step Navigation Logic  
 
 ### 1️⃣ Initial Movement  
-- The robot takes inputs tabl1,table2,table3 and **starts** and moves to the **Kitchen** to pick up an item.  
+- The robot takes inputs table1,table2,table3 and **starts** and moves to the **Kitchen** to pick up an item.  
 
 ### 2️⃣ Order Processing  
 - If the order is **confirmed**, the robot proceeds to **Table 1** to deliver the item.  
@@ -131,6 +131,38 @@ robot_description/
 Below is an RQT graph of the ROS 2 nodes and topics used in this package:
 
 ![Screenshot from 2025-03-02 02-52-34](https://github.com/user-attachments/assets/a9a93ff0-0ddd-466b-9f58-6d6e24d8106f)
+
+---
+
+
+## 🚀 Future Improvements
+
+### 1️⃣ PID Controller for Smooth and Fast Navigation
+
+- Implement a PID (Proportional-Integral-Derivative) controller to enhance motion control.
+- Ensures precise speed adjustments, reducing jerky movements.
+- Optimizes navigation by smoother turns and faster goal-reaching.
+
+### 2️⃣ Real-Time Order Cancellation Button
+
+- Add a UI button or voice command to cancel a specific table's order at any time.
+- If an order is canceled mid-route, the robot immediately reroutes instead of following the original plan.
+- Improves flexibility and responsiveness in a dynamic environment.
+
+### 3️⃣ Dynamic Obstacle Avoidance with AI
+
+- Integrate LiDAR-based SLAM or depth cameras for intelligent obstacle avoidance.
+- Enables the robot to adapt in real time instead of following a fixed avoidance routine.
+
+### 4️⃣ Multi-Robot Coordination
+
+- Implement a centralized task management system for multiple robots.
+- Prevents collisions and optimizes delivery paths for efficiency.
+
+### 5️⃣ Mobile App for Remote Monitoring & Control
+
+- Develop a mobile or web-based dashboard to track robot status.
+- Users can override paths, cancel orders, or assign new tasks on the go.
 
 ---
 
