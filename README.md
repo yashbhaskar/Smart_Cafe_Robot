@@ -70,26 +70,19 @@ https://drive.google.com/drive/folders/1HVsILKfBWDLQr8Mfs-OQ0qOrstMorvIb
 | Multiple orders (all confirm order) | Delivers to all tables and returning home |
 
 
-Order Received (table1, table2, table3)
-        |
-        v
-    Move to Kitchen
-        |
-        v
-  Wait for Confirmation
-  ┌───────────────┬───────────────┐
-  |               |               |
-  v               v               v
- Confirmed       Canceled       Timeout
-  |               |               |
-  v               v               v
-Move to         Return         Return
-table1 →       to Home        to Home
-table2 →
-table3
-  |
-  v
-Return to Home
+# Decision Tree for Navigation
+
+```mermaid
+graph TD;
+    A[Start] -->|Go to| B(Kitchen)
+    B -->|Confirm| C(Table 1)
+    B -->|Cancel| D(Home)
+    C --> E{Next Table?}
+    E -->|Table 2| F(Table 2)
+    F -->|Table 3| G(Table 3)
+    G --> H(Back to Home)
+    E -->|No| H
+
 
 ## 📂 Project Structure
 ```
